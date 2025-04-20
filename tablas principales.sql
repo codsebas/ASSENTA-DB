@@ -4,6 +4,8 @@ SET search_path TO assenta_db;
 
 CREATE TABLE empleado (
     id_empleado SERIAL PRIMARY KEY,
+    dpi_empleado VARCHAR(13),
+    otro_doc_id VARCHAR(20), -- Si la persona no tuviera DPI y tuviera que dar pasaporte, yo que se
     sexo_empleado VARCHAR(50) NOT NULL,
     estado_civil VARCHAR(1) NOT NULL,  -- C=Casado, S=Soltero
     nombre1_empleado VARCHAR(50) NOT NULL,
