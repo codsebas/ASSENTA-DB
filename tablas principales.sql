@@ -43,7 +43,7 @@ CREATE TABLE direccion_empleado( --SOLO UNA DIRECCIÓN DE CONTACTO
 
 CREATE TABLE usuarios(
     id_usuario SERIAL PRIMARY KEY,
-    usuario VARCHAR(15),
+    usuario VARCHAR(15) NOT NULL UNIQUE ,
     password VARCHAR(50) NOT NULL
 );
 
