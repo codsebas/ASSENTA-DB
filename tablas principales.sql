@@ -4,7 +4,7 @@ SET search_path TO assenta_db;
 
 CREATE TABLE empleado (
     id_empleado SERIAL PRIMARY KEY,
-    dpi_empleado VARCHAR(13) NOT NULL,
+    dpi_empleado VARCHAR(13) NOT NULL UNIQUE,
     sexo_empleado VARCHAR(50) NOT NULL,
     estado_civil VARCHAR(1) NOT NULL,  -- C=Casado, S=Soltero
     nombre1_empleado VARCHAR(50) NOT NULL,
@@ -43,8 +43,10 @@ CREATE TABLE direccion_empleado( --SOLO UNA DIRECCIÓN DE CONTACTO
 
 CREATE TABLE usuarios(
     id_usuario SERIAL PRIMARY KEY,
-    usuario VARCHAR(15) NOT NULL UNIQUE ,
-    password VARCHAR(50) NOT NULL
+    usuario VARCHAR(13) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    empleado_dpi VARCHAR(13) NOT NULL UNIQUE,
+    CONSTRAINT fk_empleado_usuario FOREIGN KEY (empleado_dpi) REFERENCES empleado(dpi_empleado)
 );
 
 CREATE TABLE huella(
@@ -53,3 +55,5 @@ CREATE TABLE huella(
     huella BYTEA not null,
     CONSTRAINT fk_huella_empleado FOREIGN KEY (empleado_id) REFERENCES empleado(id_empleado)
 );
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
