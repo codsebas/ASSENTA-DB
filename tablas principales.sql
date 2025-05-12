@@ -57,3 +57,14 @@ CREATE TABLE huella(
 );
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+
+CREATE TABLE asistencia_diaria(
+    fecha_asistencia DATE NOT NULL,
+    correlativo_asistencia SERIAL,
+    empleado_id INT NOT NULL,
+    hora_entrada TIME,
+    hora_salida TIME,
+    constraint fk_asistencia_empleado FOREIGN KEY (empleado_id) REFERENCES empleado(id_empleado),
+    constraint pk_asistencia_diaria_tbl PRIMARY KEY (fecha_asistencia, correlativo_asistencia)
+);
