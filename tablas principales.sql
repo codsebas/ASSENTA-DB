@@ -52,7 +52,7 @@ CREATE TABLE usuarios(
 CREATE TABLE huella(
     id_relacion_huellas SERIAL PRIMARY KEY,
     empleado_id INT NOT NULL,
-    huella BYTEA not null,
+    huella_template BYTEA not null,
     CONSTRAINT fk_huella_empleado FOREIGN KEY (empleado_id) REFERENCES empleado(id_empleado)
 );
 
