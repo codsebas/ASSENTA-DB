@@ -21,7 +21,8 @@ CREATE TABLE empleado (
     telefono2_empleado VARCHAR(15),
     horario_entrada TIME NOT NULL,
     horario_salida TIME NOT NULL,
-    jefe_inmediato_id INT,  -- Nueva columna para el jefe
+    jefe_inmediato_id INT,
+    estado_empleado VARCHAR(1) NOT NULL DEFAULT 'A',
     CONSTRAINT fk_empleado_puesto FOREIGN KEY (puesto_id) REFERENCES puesto(id_puesto),
     CONSTRAINT fk_jefe_inmediato FOREIGN KEY (jefe_inmediato_id) REFERENCES empleado(id_empleado)  -- Relación recursiva
 );
